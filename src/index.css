@@ -1,0 +1,23 @@
+html {
+    font-family: sans-serif;
+    background: gray;
+}
+
+/* button {
+    background: #CE93D8;
+    border: none;
+    box-shadow: 0 1px 5px black;
+    line-height: 36px;
+    border-radius: 2px;
+    border: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 14px;
+    user-select: none;
+    padding: 0 16px;
+    cursor: pointer;
+} */
+
+label {
+    font-weight: bold;
+}

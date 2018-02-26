@@ -1,0 +1,37 @@
+.stepper>.content {
+    display: flex;
+    border: 1px solid #ccc;
+}
+
+.stepper>.content>.value {
+    font-weight: bold;
+    flex: 1;
+    font-size: 0.7em;
+    text-align: center;    
+    background: white;
+    margin: 0;
+}
+
+.stepper>.content>.value .unit {
+    font-size: 0.7em;
+    line-height: 1em;
+}
+
+.stepper>.content>.steps>.button {
+    font-size: 0.7em;
+    background: #ffa040;
+    padding: 2px 5px;
+    text-align: center;
+    cursor: pointer;
+    border-color: #ffa040;
+}
+.stepper>.content>.steps>.button.disabled {
+    background: #ccc;
+    color: white;
+}
+
+.stepper>.content>* {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

@@ -1,0 +1,32 @@
+.switch>.handle {
+    width: 40px;
+    height: 20px;
+    margin: 10px auto;
+    border-radius: 10px;
+    background: #ffa040;
+    transition: 300ms background;
+    position: relative;
+}
+
+.switch>.handle:before {
+    content: '';
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    transition: 300ms left, 300ms background;
+    left: calc(100% - 22px);
+    background: #c43e00;
+}
+
+.switch>.handle.handle.disabled:before {
+    left: -2px;
+    background: #888;
+}
+
+.switch>.handle.disabled {
+    background: #ccc;    
+}

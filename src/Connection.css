@@ -1,0 +1,10 @@
+.connection {
+    position: absolute;
+    background: black;
+}
+
+.connection>.message {
+    position: absolute;
+    top: -0.75em;
+}
+

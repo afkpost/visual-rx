@@ -1,0 +1,16 @@
+.message {
+    border: 1px solid black;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 100%;
+    display: block;
+    margin: auto;
+}
+
+.message.Hot {
+    box-shadow: 0 0 20px red;
+}
+
+.message.Cold {
+    box-shadow: 0 0 20px blue;
+}
