@@ -3,9 +3,10 @@
     height: 20px;
     margin: 10px auto;
     border-radius: 10px;
-    background: #ffa040;
+    background: #ff5bff;
     transition: 300ms background;
     position: relative;
+    cursor: grab;
 }
 
 .switch>.handle:before {
@@ -19,7 +20,7 @@
     bottom: -2px;
     transition: 300ms left, 300ms background;
     left: calc(100% - 22px);
-    background: #c43e00;
+    background: #9e00c5;
 }
 
 .switch>.handle.handle.disabled:before {

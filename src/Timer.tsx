@@ -1,13 +1,34 @@
 import * as React from 'react';
-import { TimerComponent as Props } from './Models';
+import { Component, WithSinks, Message } from './Models';
 import './Timer.css';
 import { Stepper } from './controls/Stepper';
+import { Subject, BehaviorSubject, Observable } from 'rxjs';
+
+export type TimerComponent = Component & {
+    readonly period: Subject<number>
+};
+
+export const TimerComponent = (period: number) => {
+    const periodStream: Subject<number> = new BehaviorSubject(period);
+    
+    return {
+        ...WithSinks(
+            Component('Timer'),
+            () => periodStream
+                .map(x => Observable
+                    .timer(x, x)
+                    .map(() => new Message('Cold')))
+                .switch()
+        ),
+        period: periodStream
+    };
+};
 
 type State = {
     period: number
 };
 
-export class Timer extends React.PureComponent<Props, State> {
+export class Timer extends React.PureComponent<TimerComponent, State> {
     state: State = {
         period: 0
     };

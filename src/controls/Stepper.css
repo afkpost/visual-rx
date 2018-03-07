@@ -19,11 +19,11 @@
 
 .stepper>.content>.steps>.button {
     font-size: 0.7em;
-    background: #ffa040;
+    background: #ff5bff;
     padding: 2px 5px;
     text-align: center;
     cursor: pointer;
-    border-color: #ffa040;
+    border-color: #ff5bff;
 }
 .stepper>.content>.steps>.button.disabled {
     background: #ccc;

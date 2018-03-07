@@ -1,4 +1,4 @@
-.print {
+.observer {
     background: white;
     height: 75px;
     width: 75px;
@@ -7,4 +7,8 @@
     flex-direction: column;
     justify-content: space-around;
     border: 2px solid black;
+}
+
+.observer .messages-container {
+    margin: auto;
 }

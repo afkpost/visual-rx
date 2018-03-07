@@ -1,12 +1,12 @@
 html {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: gray;
 }
 
-/* button {
-    background: #CE93D8;
+button {
+    background: #ff5bff;
     border: none;
-    box-shadow: 0 1px 5px black;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     line-height: 36px;
     border-radius: 2px;
     border: 10px;
@@ -16,7 +16,8 @@ html {
     user-select: none;
     padding: 0 16px;
     cursor: pointer;
-} */
+    font-family: 'Roboto', sans-serif;
+}
 
 label {
     font-weight: bold;

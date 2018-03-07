@@ -82,7 +82,7 @@ export class Connection extends React.Component<Props, State> {
                         key={msg.message.id} 
                         msg={msg.message}
                         style={{
-                            left: msg.progress * length,
+                            left: msg.progress * (length + 35) - 35,
                         }}
                     />
                 )}

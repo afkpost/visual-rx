@@ -3,8 +3,14 @@
     background: black;
 }
 
-.connection>.message {
+.connection>.messages-container {
     position: absolute;
-    top: -0.75em;
+    top: -35px;
+    transform: rotateZ(90deg);
+    height: 70px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 

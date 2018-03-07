@@ -10,18 +10,38 @@ type Props = {
     }
 };
 
+const minSize = 20;
+const maxSize = 50;
+
 export class Message extends React.PureComponent<Props> {
     render() {
         const { msg, style } = this.props;
+        const count = msg.colors.length;
+        const widthCount = Math.floor(Math.sqrt(count) + 1);
+        const size = Math.min(minSize, maxSize / widthCount);
         return (
-            <span 
-                key={msg.id} 
-                className={cx('message', msg.type)}
-                style={{
-                    ...style,
-                    background: msg.color
-                }}
-            />
+            <div className="messages-container" style={style}>
+                <div 
+                    key={msg.id} 
+                    className={cx('messages', msg.type, { single: count <= 1})}
+                    style={{
+                        maxWidth: widthCount * size,
+                        mawHeight: widthCount * size
+                    }}
+                >
+                    { msg.colors.map((background, i) => 
+                        <span 
+                            key={i} 
+                            className="message"
+                            style={{ 
+                                background,
+                                width: size,
+                                height: size
+                            }}
+                        />
+                    )}
+                </div>
+            </div>
         );
     }
 }

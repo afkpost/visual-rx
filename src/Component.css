@@ -1,6 +1,6 @@
 .component {
     position: absolute;
-    background: #ff6f00;
+    background: #d500f9;
     height: 150px;
     width: 150px;
     cursor: move;
@@ -15,7 +15,7 @@
 
 .component header {
     padding: 8px;
-    background: #c43e00;
+    background: #9e00c5;
     color: white;
 }
 

@@ -1,16 +1,51 @@
 import * as React from 'react';
 import { Switch } from './controls/Switch';
-import { ConnectableComponent as Model } from './Models';
+import { Component, Message, WithSinks, WithSources, MessageType } from './Models';
+import { Observable, Subscription, BehaviorSubject, Subject, ConnectableObservable } from 'rxjs';
 
-type Props = {
-    model: Model
+export type ConnectableComponent = Component & {
+    subscription: Observable<Subscription | undefined>
+    connect: () => void
+    disconnect: () => void
+};
+
+export const ConnectableComponent: () => ConnectableComponent = () => {
+    const subscription = new BehaviorSubject<Subscription | undefined>(undefined);
+    const connections  = new Subject<ConnectableObservable<Message>>();
+    const connectableConnections = connections.publishReplay();
+    connectableConnections.connect();
+
+    const _connections = connectableConnections as Observable<ConnectableObservable<Message>>;
+
+    return {
+        ...WithSinks(
+            WithSources(
+                Component('Connectable'),
+                x => connections.next(x.publish())),
+            () => _connections
+                .switch()
+                .map(x => ({...x, type: 'Hot' as MessageType}))),
+        subscription,
+        connect: () => {
+            _connections
+                .take(1)
+                .subscribe(c => subscription.next(c.connect()));
+        },
+        disconnect: () => subscription
+            .take(1)
+            .filter(x => !!x)
+            .subscribe(sub => {
+                sub!.unsubscribe();
+                subscription.next(undefined);
+            })
+    };
 };
 
 type State = {
     hasSubscription: boolean
 };
 
-export class Connectable extends React.PureComponent<Props, State> {
+export class Connectable extends React.PureComponent<{model: ConnectableComponent}, State> {
     state: State = {
         hasSubscription: false
     };
